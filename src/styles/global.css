@@ -1,0 +1,40 @@
+/* Import Montserrat font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+/* Import FontAwesome */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", "Arial", sans-serif;
+  min-height: 100vh;
+  background-color: #F9FBF4; /* gfc-cream */
+  color: #333;
+}
+
+/* Custom colors */
+:root {
+  --gfc-teal: #09906F;
+  --gfc-orange: #FFB347;
+  --gfc-cream: #F9FBF4;
+  --gfc-dark: #264653;
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
