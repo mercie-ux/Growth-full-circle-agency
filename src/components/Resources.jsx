@@ -12,18 +12,22 @@ const Resources = () => {
     {
       title: "The Importance of Mental Health in the Workplace",
       image: mentalHealthImage,
+      url: "https://www.bain.com/insights/talk-mental-health-workplace?",
     },
     {
       title: "How to Enhance Client Engagement through Strategic Surveys",
       image: clientEngagementImage,
+      url: "",
     },
     {
       title: "5 Tips for Implementing a Successful Wellness Program",
       image: wellnessProgramImage,
+      url: "",
     },
     {
       title: "Our Commitment to Social Responsibility: The Impact of Pro Bono Mental Health Services",
       image: socialResponsibilityImage,
+      url: "",
     },
   ];
   return (
@@ -68,7 +72,7 @@ const Resources = () => {
               <div key={index} className="blog-card" data-animate="fade-slide-up">
                 <img src={post.image} alt={post.title} className="blog-image" />
                 <h5>{post.title}</h5>
-                <a href="#" className="read-more-btn">
+                <a href={post.url} className="read-more-btn" target="_blank" rel="noopener noreferrer">
                   Read More
                 </a>
               </div>

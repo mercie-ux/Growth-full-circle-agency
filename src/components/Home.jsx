@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import backgroundImage from "../assets/image1.jpg";
 import "../styles/Home.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
    // Sample testimonials
@@ -40,10 +41,9 @@ const Home = () => {
       <div className="hero" style={{ backgroundImage: `url(${backgroundImage})` }}>
         <div className="hero-content">
           <h1>Growth360: Cultivating Mental Wellness, Empowering Businesses.</h1>
-          
-          <a href="#services" className="cta-button">
+          <Link to="/services" className="cta-button">
             Explore Services
-          </a>
+          </Link>
         </div>
       </div>
       <div className="home-text" data-animate="fade-slide-up">
