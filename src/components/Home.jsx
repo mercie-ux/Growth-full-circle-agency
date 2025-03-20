@@ -81,7 +81,7 @@ const Home = () => {
         <h2>Key Services</h2>
         <div className="services-grid">
           <div className="service-card" data-animate="fade-slide-up">
-            <img width="80px" height="80px" src="/src/assets/package1.svg" alt="illustration" />
+            <img width="80px" height="80px" src="/package1.svg" alt="illustration" />
             <h3>Corporate Wellness Packages</h3>
             <p>Tailored programs designed to meet the unique needs of your business.</p>
           </div>
