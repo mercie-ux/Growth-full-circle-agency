@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import backgroundImage from "../assets/image1.jpg";
 import "../styles/Home.css";
 
@@ -13,6 +14,26 @@ const Home = () => {
       author: "John Smith, Community Leader",
     },
   ];
+  useEffect(() => {
+    const elements = document.querySelectorAll("[data-animate]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate");
+            observer.unobserve(entry.target); // Stop observing once animated
+          }
+        });
+      },
+      { threshold: 0.2 } // Trigger when 20% of the element is visible
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => {
+      elements.forEach((element) => observer.unobserve(element));
+    };
+  }, []);
   return (
     <section id="home" className="home">
       { /* Hero Section */}
@@ -25,7 +46,7 @@ const Home = () => {
           </a>
         </div>
       </div>
-      <div className="home-text">
+      <div className="home-text" data-animate="fade-slide-up">
           <p>
           At Growth Full Circle Agencies, we believe that <span className="highlight">mental well-being</span> is the <span className="highlight">cornerstone</span> 
           of <span className="highlight">business success</span> and <span className="highlight">community flourishing</span>. 
@@ -56,36 +77,36 @@ const Home = () => {
       </div>
       
       {/* Key Services Section */}
-      <div className="key-services">
+      <div className="key-services" data-animate="fade-slide-up">
         <h2>Key Services</h2>
         <div className="services-grid">
-          <div className="service-card">
+          <div className="service-card" data-animate="fade-slide-up">
             <img width="80px" height="80px" src="/src/assets/package1.svg" alt="" />
             <h3>Corporate Wellness Packages</h3>
             <p>Tailored programs designed to meet the unique needs of your business.</p>
           </div>
-          <div className="service-card">
+          <div className="service-card" data-animate="fade-slide-up">
             <img width="80px" height="80px" src="/src/assets/service1.svg" alt="" />
             <h3>Client Engagement Strategies</h3>
             <p>Innovative approaches to understanding and engaging your clients.</p>
           </div>
-          <div className="service-card">
+          <div className="service-card" data-animate="fade-slide-up">
             <img width="80px" height="80px" src="/src/assets/support.svg" alt="" />
             <h3>SME Mental Health Support</h3>
             <p>Subsidized services that enhance productivity and business resilience.</p>
           </div>
-          <div className="service-card">
+          <div className="service-card" data-animate="fade-slide-up">
             <img width="100px" height="100px" src="/src/assets/social1.svg" alt="" />
             <h3>Social Impact Initiatives</h3>
             <p>Pro bono mental health services and free awareness content on our platforms.</p>
           </div>
         </div>
       </div>
-      <div className="footer-section testimonials">
+      <div className="footer-section testimonials" data-animate="fade-slide-up">
           <h3>Testimonials</h3>
-          <div className="testimonial-container">
+          <div className="testimonial-container" >
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="testimonial">
+              <div key={index} className="testimonial" data-animate="fade-slide-up">
                 <p className="testimonial-text">"{testimonial.text}"</p>
                 <p className="testimonial-author">- {testimonial.author}</p>
               </div>

@@ -1,14 +1,27 @@
+import useAnimateOnScroll from "../hooks/useAnimateOnScroll";
 import "../styles/Contact.css";
 
 const Contact = () => {
+  useAnimateOnScroll();  
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+    alert(`Contact form submitted:\n${JSON.stringify(data, null, 2)}`);
+    };
   return (
     <section id="contact" className="contact">
       <div className="container">
-        <h2>Contact Us</h2>
-        <div className="contact-grid">
+        <h2 data-animate="fade-slide-up">Contact Us</h2>
+        <div className="contact-grid" data-animate="fade-slide-up">
           <div className="contact-form">
             <h3>Get in Touch</h3>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input type="text" id="name" placeholder="Your Name" />
@@ -28,7 +41,7 @@ const Contact = () => {
               <button type="submit">Send Message</button>
             </form>
           </div>
-          <div className="contact-info">
+          <div className="contact-info" data-animate="fade-slide-up">
             <img width="300px" height="200px" src="/src/assets/contact-us.jpg" alt="" />
             <h3>Contact Information</h3>
             <p>

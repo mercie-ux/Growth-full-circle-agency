@@ -135,6 +135,7 @@
   color: #666;
 }
 
+
 @media (max-width: 768px) {
   .story-mission {
     grid-template-columns: 1fr;

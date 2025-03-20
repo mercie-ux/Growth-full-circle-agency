@@ -1,12 +1,38 @@
+import useAnimateOnScroll from "../hooks/useAnimateOnScroll";
 import "../styles/Resources.css";
+import mentalHealthImage from "../assets/design3.png";
+import clientEngagementImage from "../assets/survey.jpg";
+import wellnessProgramImage from "../assets/implement1.jpg";
+import socialResponsibilityImage from "../assets/socialresponsb.png";
 
 const Resources = () => {
+  useAnimateOnScroll();
+
+  const blogPosts = [
+    {
+      title: "The Importance of Mental Health in the Workplace",
+      image: mentalHealthImage,
+    },
+    {
+      title: "How to Enhance Client Engagement through Strategic Surveys",
+      image: clientEngagementImage,
+    },
+    {
+      title: "5 Tips for Implementing a Successful Wellness Program",
+      image: wellnessProgramImage,
+    },
+    {
+      title: "Our Commitment to Social Responsibility: The Impact of Pro Bono Mental Health Services",
+      image: socialResponsibilityImage,
+    },
+  ];
   return (
     <section id="resources" className="resources">
       <div className="container">
-        <h2>Resources</h2>
-        <div className="resource-section">
-          <h3>Downloadable Guides</h3>
+        <h2 data-animate="fade-slide-up">Resources</h2>
+        <div className="resource-section" data-animate="fade-slide-up">
+        <img width="30" height="30" src="https://img.icons8.com/material-outlined/24/download--v1.png" alt="download--v1"/>
+          <h3>Downloadable Guides </h3>
           <p>
             Offer free, valuable resources such as mental health checklists, wellness program templates, and employee engagement tools.
           </p>
@@ -14,7 +40,8 @@ const Resources = () => {
             Download Now
           </a>
         </div>
-        <div className="resource-section">
+        <div className="resource-section" data-animate="fade-slide-up">
+        <img width="58" height="58" src="https://img.icons8.com/external-wanicon-lineal-wanicon/64/external-teaching-online-course-wanicon-lineal-wanicon.png" alt="external-teaching-online-course-wanicon-lineal-wanicon"/>
           <h3>Webinars and Workshops</h3>
           <p>
             Provide information about upcoming events, including dates, topics, and registration links. Highlight the availability of free webinars focused on mental health awareness and education.
@@ -23,7 +50,8 @@ const Resources = () => {
             Register for Upcoming Webinar
           </a>
         </div>
-        <div className="resource-section">
+        <div className="resource-section" data-animate="fade-slide-up">
+          <img width="50" height="50" src="https://img.icons8.com/ios/50/signing-a-document.png" alt="signing-a-document"/>
           <h3>White Papers</h3>
           <p>
             Share in-depth research on topics like the importance of mental health in the workplace, the impact of corporate wellness programs, and strategies for effective client engagement.
@@ -32,15 +60,20 @@ const Resources = () => {
             Read White Papers
           </a>
         </div>
-        <div className="resource-section">
+        <div className="resource-section" data-animate="fade-slide-up">
           <h3>Blog Content</h3>
           <h4>Latest Posts</h4>
-          <ul>
-            <li>The Importance of Mental Health in the Workplace.</li>
-            <li>How to Enhance Client Engagement through Strategic Surveys.</li>
-            <li>5 Tips for Implementing a Successful Wellness Program.</li>
-            <li>Our Commitment to Social Responsibility: The Impact of Pro Bono Mental Health Services.</li>
-          </ul>
+          <div className="blog-posts-grid">
+            {blogPosts.map((post, index) => (
+              <div key={index} className="blog-card" data-animate="fade-slide-up">
+                <img src={post.image} alt={post.title} className="blog-image" />
+                <h5>{post.title}</h5>
+                <a href="#" className="read-more-btn">
+                  Read More
+                </a>
+              </div>
+            ))}
+          </div>
           <h4>Categories</h4>
           <ul>
             <li>Corporate Wellness</li>

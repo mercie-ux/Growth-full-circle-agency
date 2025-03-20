@@ -1,14 +1,16 @@
+import useAnimateOnScroll from "../hooks/useAnimateOnScroll";
 import { useState, useEffect } from "react";
 import "../styles/About.css";
 
 // Import the images
 import aboutImage1 from "../assets/image6.jpg";
-import aboutImage2 from "../assets/image2.jpg";
+import aboutImage2 from "../assets/image 8.jpg";
 import aboutImage3 from "../assets/image3.jpg";
 import aboutImage4 from "../assets/image4.jpg";
 import aboutImage5 from "../assets/image5.jpg";
 
 const About = () => {
+  useAnimateOnScroll();
   // Array of images for the slideshow
   const images = [aboutImage1, aboutImage2, aboutImage3, aboutImage4, aboutImage5];
 
@@ -40,8 +42,8 @@ const About = () => {
 
       {/* Existing About Us Content */}
       <div className="container">
-        <h2>About Us</h2>
-        <div className="story-mission">
+        <h2 data-animate="fade-slide-up">About Us</h2>
+        <div className="story-mission" data-animate="fade-slide-up">
           <div className="story">
             <h3>Our Story</h3>
             <p>
@@ -50,7 +52,7 @@ const About = () => {
               and well-being for over 5 years. Our team is committed to delivering <span className="highlight">impactful wellness programs</span> tailored to the unique needs of each client while also giving back to society through pro bono services and community outreach.
             </p>
           </div>
-          <div className="mission">
+          <div className="mission" data-animate="fade-slide-up">
             <h3>Mission Statement</h3>
             <p>
               Our mission is to <span className="highlight">foster a culture</span> of mental well-being within businesses 
@@ -61,7 +63,7 @@ const About = () => {
             </p>
           </div>
         </div>
-        <div className="values">
+        <div className="values" data-animate="fade-slide-up">
           <h3>Our Values</h3>
           <div className="values-grid">
             <div className="value-card">
