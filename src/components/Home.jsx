@@ -81,22 +81,22 @@ const Home = () => {
         <h2>Key Services</h2>
         <div className="services-grid">
           <div className="service-card" data-animate="fade-slide-up">
-            <img width="80px" height="80px" src="/src/assets/package1.svg" alt="" />
+            <img width="80px" height="80px" src="/src/assets/package1.svg" alt="illustration" />
             <h3>Corporate Wellness Packages</h3>
             <p>Tailored programs designed to meet the unique needs of your business.</p>
           </div>
           <div className="service-card" data-animate="fade-slide-up">
-            <img width="80px" height="80px" src="/src/assets/service1.svg" alt="" />
+            <img width="80px" height="80px" src="/src/assets/service1.svg" alt="illustration" />
             <h3>Client Engagement Strategies</h3>
             <p>Innovative approaches to understanding and engaging your clients.</p>
           </div>
           <div className="service-card" data-animate="fade-slide-up">
-            <img width="80px" height="80px" src="/src/assets/support.svg" alt="" />
+            <img width="80px" height="80px" src="/src/assets/support.svg" alt="illustration" />
             <h3>SME Mental Health Support</h3>
             <p>Subsidized services that enhance productivity and business resilience.</p>
           </div>
           <div className="service-card" data-animate="fade-slide-up">
-            <img width="100px" height="100px" src="/src/assets/social1.svg" alt="" />
+            <img width="100px" height="100px" src="/src/assets/social1.svg" alt="illustration" />
             <h3>Social Impact Initiatives</h3>
             <p>Pro bono mental health services and free awareness content on our platforms.</p>
           </div>
