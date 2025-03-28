@@ -6,6 +6,7 @@ import Services from "./components/Services";
 import Resources from "./components/Resources";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import MentalWellnessChatbot from "./components/MentalWellnessChatbot";
 import "./App.css";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
+      <MentalWellnessChatbot />
     </div>
   );
 }

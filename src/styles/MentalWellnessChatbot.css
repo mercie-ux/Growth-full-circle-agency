@@ -1,0 +1,55 @@
+/* src/styles/MentalWellnessChatbot.css */
+.rcb-header {
+    background-color: #09906F !important;
+    color: white !important;
+}
+
+.rcb-option-container button {
+    background-color: #09906F !important;
+    color: white !important;
+}
+
+.rcb-chat-bot-message {
+    background-color: #09906F !important;
+    color: white !important;
+}
+.rcb-chat-bot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+.rcb-chat-window {
+    width: 350px;
+    height: 500px;
+  }
+.rcb-chat-button {
+    background-color: #09906F !important;
+}
+  
+.rcb-tooltip {
+    background-color: #09906F !important;
+    color: white;
+}
+.rcb-header {
+    background-color: #09906F !important;
+}
+
+.rcb-option-container button {
+    background-color: #09906F !important;
+}
+
+.rcb-user-message {
+    background-color: #09906F !important;
+}
+
+.rcb-chat-button:hover {
+    background-color: #077055 !important; /* Slightly darker shade for hover state */
+}
+  @media (max-width: 768px) {
+    .rcb-chat-window {
+      width: 300px;
+      height: 400px;
+    }
+  }
