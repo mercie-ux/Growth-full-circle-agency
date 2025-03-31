@@ -5,7 +5,7 @@ import "../styles/MentalWellnessChatbot.css";
 const MentalWellnessChatbot = () => {
   const flow = {
     start: {
-      message: "Hello! I’m WellnessBot, here to support your mental well-being at GrowthFullCircle. How can I assist you today?",
+      message: "Hello! I’m GrowthBot, here to support your mental well-being at GrowthFullCircle. How can I assist you today?",
       options: [
         "I’m feeling stressed",
         "Mindfulness exercises",
@@ -111,6 +111,7 @@ const MentalWellnessChatbot = () => {
     },
   };
 
+
   const styles = {
     chatWindowStyle: {
       borderRadius: "10px",
@@ -118,42 +119,54 @@ const MentalWellnessChatbot = () => {
 
     },
     headerStyle: {
-      backgroundColor: "#09906F",
+      background: "linear-gradient(to right, #09906f, #264653)",
       color: "#fff",
       padding: "10px",
       fontSize: "1.2rem",
     },
     messageStyle: {
-      backgroundColor: "#99006F",
+      background: "#27AE60",
       borderRadius: "8px",
       padding: "8px",
       margin: "5px 0",
+      color: "#fff",
+    },
+    botBubbleStyle: {
+      background: "#09906F",
+      
     },
     userMessageStyle: {
-      backgroundColor: "#09906F",
+      background: "#09906F",
       color: "#fff",
       borderRadius: "8px",
       padding: "8px",
       margin: "5px 0",
     },
-    optionStyle: {
-      backgroundColor: "#09906F",
-      color: "#fff",
-      borderRadius: "5px",
+    botOptionStyle: {
+      background: "white",
+      color: "black",
+      borderRadius: "15px",
       padding: "8px",
       margin: "5px",
       cursor: "pointer",
     },
     chatButtonStyle: {
-        backgroundColor: "#09906F",
+        background: "#09906F",
         color: "#fff",
+    },
+    sendButtonStyle: {
+      background: "#09906F",
+    },
+    sendButtonHoveredStyle: {
+      background: "#FFB347",
     },
   };
 
   return (
     <ChatBot
       settings={{
-        general: { embedded: false, showHeader: true },
+        general: { embedded: false, showHeader: true, },
+        header: { title: "GrowthBot",},
         chatHistory: { storageKey: "wellness_chat_history" },
         voice: { disabled: true },
         chatButton: { icon: "https://img.icons8.com/ios-filled/50/ffffff/chat.png" },

@@ -1,9 +1,4 @@
 /* src/styles/MentalWellnessChatbot.css */
-.rcb-header {
-    background-color: #09906F !important;
-    color: white !important;
-}
-
 .rcb-option-container button {
     background-color: #09906F !important;
     color: white !important;
@@ -27,17 +22,23 @@
 .rcb-chat-button {
     background-color: #09906F !important;
 }
-  
-.rcb-tooltip {
+
+.rcb-chat-tooltip {
     background-color: #09906F !important;
     color: white;
 }
-.rcb-header {
-    background-color: #09906F !important;
+.rcb-badge{
+    background-color: #FFB347;
+}
+.rcb-chat-header-container.ai-style-change-3 {
+    background-color: linear-gradient(to right,green, orange) !important;
 }
 
 .rcb-option-container button {
     background-color: #09906F !important;
+}
+.rcb-bot-message.rcb-bot-message-entry.ai-style-change-4 {
+    background-color: #264643;
 }
 
 .rcb-user-message {
