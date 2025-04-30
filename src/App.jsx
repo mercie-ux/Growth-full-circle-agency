@@ -1,4 +1,7 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext.jsx";
+import ThemeToggle from "./components/ThemeToggle";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -11,18 +14,22 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="app">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/resources" element={<Resources />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-      <Footer />
-      <MentalWellnessChatbot />
-    </div>
+    <ThemeProvider>
+      <ThemeToggle />
+      <div className="app">
+        
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+        <Footer />
+        <MentalWellnessChatbot />
+      </div>
+    </ThemeProvider>
   );
 }
 

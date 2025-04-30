@@ -12,11 +12,22 @@
   box-sizing: border-box;
 }
 
-body {
+html{
+  background-color: var(--gfc-cream);
+  color: #333;
   font-family: "Poppins", "Arial", sans-serif;
   min-height: 100vh;
-  background-color: #F9FBF4; /* gfc-cream */
-  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+/*Dark mode*/
+html.dark {
+  background-color: var(--gfc-dark);
+  color: var(--gfc-cream);
+}
+body {
+  background: inherit;
+  color: inherit;
+  min-height: 100vh;
 }
 
 /* Custom colors */
@@ -26,7 +37,19 @@ body {
   --gfc-cream: #F9FBF4;
   --gfc-dark: #264653;
 }
-
+.app-container {
+  min-height: 100vh;
+  padding: 16px;
+}
+.content{
+  padding: 24px;
+  border-radius: 8px;
+  color: #ffffff;
+}
+html.dark .content{
+  background-color: #355E6F;
+  color: var(--gfc-cream);
+}
 /* Animation for fade-in effect */
 @keyframes fadeIn {
   from {
@@ -56,4 +79,8 @@ body {
 
 [data-animate="fade-slide-up"].animate {
   animation: fadeSlideUp 0.8s ease-in-out forwards;
+}
+.dark .content{
+  background-color: #355E6F;
+  color: #F9FBF4;
 }

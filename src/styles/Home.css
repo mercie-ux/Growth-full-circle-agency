@@ -213,6 +213,7 @@
   text-align: center;
   color: var(--gfc-cream);
   font-weight: 400;
+  display: block;
 }
 
 .testimonial-text {

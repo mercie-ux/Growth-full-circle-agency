@@ -97,10 +97,10 @@ const MentalWellnessChatbot = () => {
       path: (params) => {
         switch (params.userInput) {
           case "Stress management tips":
-            window.location.href = "/stress-management"; // Replace with your actual route
+            window.location.href = "/stress-management"; // To be replaced  with  actual route
             return "start";
           case "Work-life balance articles":
-            window.location.href = "/work-life-balance"; // Replace with your actual route
+            window.location.href = "/work-life-balance"; // to be replaced with  actual route
             return "start";
           case "Professional help":
             return "contactSupport";
