@@ -1,9 +1,12 @@
 import useAnimateOnScroll from "../hooks/useAnimateOnScroll";
 import packageBackground from "../assets/potplant.jpg";
+import { useState } from "react";
 import "../styles/Services.css";
 
 const Services = () => {
   useAnimateOnScroll();
+  // state to track payment method selection
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
   const handleSubscribeClick = () => {
     const modal = document.getElementById("subscriptionModal");
     modal.style.display = "block";
@@ -13,7 +16,7 @@ const Services = () => {
     modal.style.display = "none";
   };
 
-  const handleSubmit = async (event) =>{
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = {
@@ -21,27 +24,48 @@ const Services = () => {
       email: formData.get("email"),
       package: formData.get("package"),
       paymentMethod: formData.get("paymentMethod"),
-    };
-    // send the form  data to the backend api
-try {
-  const response = await fetch('http://localhost:5000/api/subscribe', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-  });
+      mpesaPhone: formData.get("mpesaPhone"),
+      mpesaCode: formData.get("mpesaCode"),
+      cardName: formData.get("cardName"),
+      cardNumber: formData.get("cardNumber"),
+      cardExpiry: formData.get("cardExpiry"),
+      cardCVV: formData.get("cardCVV"),
+      btcWallet: formData.get("btcWallet"),
+      btcAmount: formData.get("btcAmount"),
+      // card info
+      cardName: formData.get("cardName") || null,
+      cardNumber: formData.get("cardNumber") || null,
+      expiry: formData.get("expiry") || null,
+      cvv: formData.get("cvv") || null,
+      // mpesa info
+      mpesaPhone: formData.get("mpesaPhone") || null,
+      mpesaCode: formData.get("mpesaCode") || null,
+      // bitcoin info
+      btcWallet: formData.get("btcWallet") || null,
+      btcAmount: formData.get("btcAmount") || null,
 
-  if (response.ok) {
-      alert('Subscription successful!');
-      handleCloseModal(); // close the modal after successful submission
-  } else {
-      alert('Subscription failed. Please try again.');
-  }
-} catch(error) {
-  console.error('Error:', error);
-  alert('An error occurred while submitting your subscription.');
-}
+    };
+
+    // send the form  data to the backend api
+    try {
+      const response = await fetch('http://localhost:5000/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert('Subscription successful!');
+        handleCloseModal(); // close the modal after successful submission
+      } else {
+        alert('Subscription failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred while submitting your subscription.');
+    }
   };
   return (
     <section id="services" className="services">
@@ -111,20 +135,96 @@ try {
             <label htmlFor="paymentMethod">Payment Method:</label>
             <div className="payment-options">
               <label htmlFor="option1">
-                <input type="radio" name="paymentMethod" value="card" required />
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="card" required
+                  checked={selectedPaymentMethod === "card"}
+                  onChange={(e) => setSelectedPaymentMethod(e.target.value)}
+                />
                 Credit/Debit Card
               </label>
 
               <label htmlFor="option2">
-                <input type="radio" name="paymentMethod" value="mpesa" required />
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="mpesa"
+                  required
+                  checked={selectedPaymentMethod === "mpesa"}
+                  onChange={(e) => setSelectedPaymentMethod(e.target.value)}
+                />
                 M-pesa
               </label>
 
               <label htmlFor="option3">
-                <input type="radio" name="paymentMethod" value="bitcoin" required />
+                <input
+                  type="radio"
+                  name="paymentMethod"
+                  value="bitcoin"
+                  required
+                  checked={selectedPaymentMethod === "bitcoin"}
+                  onChange={(e) => setSelectedPaymentMethod(e.target.value)}
+                />
                 Bitcoin
               </label>
             </div>
+            {/*Card Payment form */}
+            {selectedPaymentMethod === "card" && (
+              <div className="payment-popup card-form">
+                <label htmlFor="cardName">Cardholder Name:</label>
+                <input type="text" id="cardName" name="cardName" required />
+
+                <label htmlFor="cardNumber">Card Number:</label>
+                <input type="text" id="cardNumber" name="cardNumber" required />
+
+                <label htmlFor="expiry">Expiry Date:</label>
+                <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required />
+
+                <label htmlFor="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required />
+
+                <button type="submit">Pay with Card</button>
+              </div>
+            )}
+            {selectedPaymentMethod === "mpesa" && (
+              <div className="payment-popup mpesa-form">
+                <label htmlFor="mpesaPhone">M-Pesa Phone Number:</label>
+                <input type="tel" id="mpesaPhone" name="mpesaPhone" required />
+
+                <label htmlFor="mpesaCode">Transaction Code (optional):</label>
+                <input type="text" id="mpesaCode" name="mpesaCode" />
+
+                <button type="submit">Pay with M-Pesa</button>
+              </div>
+            )}
+            {selectedPaymentMethod === "bitcoin" && (
+              <div className="payment-popup bitcoin-form">
+                <label htmlFor="btcWallet">Your Bitcoin Wallet Address:</label>
+                <input type="text" id="btcWallet" name="btcWallet" required />
+
+                <label htmlFor="btcAmount">Amount in BTC (sats):</label>
+                <input type="text" id="btcAmount" name="btcAmount" step="0.0001" required />
+
+                <p>Please send the payment to the following address:</p>
+                <code>bc1qyourwalletaddresshere</code>
+
+                <img
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=bitcoin:bc1qyourwalletaddresshere?amount=0.0005"
+                  alt="Bitcoin QR Code"
+                />
+
+                <p>After sending, click the button below to complete the subscription.</p>
+
+                <button type="submit">Confirm Bitcoin Payment</button>
+              </div>
+            )}
+            {/* Common Payment Submit Button */}
+            {selectedPaymentMethod && (
+              <button type="submit" className="submit-payment-button">
+                {`Pay with ${selectedPaymentMethod === 'mpesa' ? 'M-Pesa' : selectedPaymentMethod === 'card' ? 'Card' : 'Bitcoin'}`}
+              </button>
+            )}
             <button type="submit">Submit Subscription</button>
           </form>
         </div>

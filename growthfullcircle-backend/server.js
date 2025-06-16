@@ -2,7 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import mysql from 'mysql2';
+import mongoose from 'mongoose';
+import subscribeRoute from './routes/subscribe.js';
 
 dotenv.config();
 const app = express();  
@@ -13,24 +14,18 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+// Routes
+app.use('/api/subscribe', subscribeRoute);
 
-// MYSQL Database connection
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    port: process.env.DB_PORT,
-});
-
-// verify the db connection
-connection.connect((err) => {
-    if (err) {
-        console.error('Error connecting to the database:', err.stack);
-        process.exit(1); // Exit the process if connection fails
-    }
-    console.log('Connected to the database', connection.threadId);
-});
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        console.log('MongoDB connected successfully');
+    })
+    .catch((error) => {
+        console.error('MongoDB connection failed:', error.message);
+        process.exit(1);
+    });
 
 
 //test route
