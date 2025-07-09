@@ -1,0 +1,86 @@
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Poppins:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+/* Import FontAwesome */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css");
+
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  background-color: var(--gfc-cream);
+  color: #333;
+  font-family: "Poppins", "Arial", sans-serif;
+  min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
+}
+/*Dark mode*/
+html.dark {
+  background-color: var(--gfc-dark);
+  color: var(--gfc-cream);
+}
+body {
+  background: inherit;
+  color: inherit;
+  min-height: 100vh;
+}
+
+/* Custom colors */
+:root {
+  --gfc-teal: #09906F;
+  --gfc-orange: #FFB347;
+  --gfc-cream: #F9FBF4;
+  --gfc-dark: #264653;
+}
+.app-container {
+  min-height: 100vh;
+  padding: 16px;
+}
+.content{
+  padding: 24px;
+  border-radius: 8px;
+  color: #ffffff;
+}
+html.dark .content{
+  background-color: #355E6F;
+  color: var(--gfc-cream);
+}
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Global Animation Styles */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-animate="fade-slide-up"] {
+  opacity: 0;
+}
+
+[data-animate="fade-slide-up"].animate {
+  animation: fadeSlideUp 0.8s ease-in-out forwards;
+}
+.dark .content{
+  background-color: #355E6F;
+  color: #F9FBF4;
+}

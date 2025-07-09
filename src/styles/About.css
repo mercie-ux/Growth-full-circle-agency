@@ -1,0 +1,157 @@
+.about {
+  padding-top: 80px; /* Adjusted to account for the fixed navbar */
+  background-color: var(--gfc-cream);
+}
+
+/* Slideshow Styles */
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Adjust height as needed */
+  overflow: hidden;
+}
+
+.slideshow-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures images scale properly */
+  opacity: 0;
+  transition: opacity 1s ease-in-out; /* Smooth fade transition */
+}
+
+.slideshow-image.active {
+  opacity: 1; /* Only the active image is visible */
+}
+
+/* Overlay for better text readability (optional) */
+.slideshow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Optional dark overlay */
+  z-index: 1;
+}
+
+/* Existing About Us Content Styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.about h2 {
+  font-family: 'Lora', 'Georgia', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--gfc-dark);
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.story-mission {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.story{
+  margin-bottom: 20px;
+}
+
+.mission {
+  padding-top: 50px;
+  margin-bottom: 80px;
+}
+.story h3,
+.mission h3 {
+  font-family: 'Lora', 'Georgia', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gfc-teal);
+  margin-bottom: 16px;
+}
+
+.story p,
+.mission p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #666;
+}
+.mission span {
+  font-weight: 600; /* Bolder weight for emphasis */
+  color: var(--gfc-orange); /* Orange for highlights */
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+  padding: 2px 6px; /* Slight padding for the background */
+  border-radius: 3px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+  cursor: pointer;
+}
+.highlight:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Slightly brighter on hover */
+}
+.values {
+  padding-top: 30px;
+  margin-bottom: 80px;
+}
+.values h3 {
+  font-family: 'Lora', 'Georgia', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gfc-teal);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
+}
+
+.value-card {
+  padding: 24px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.value-card:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.value-card h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--gfc-dark);
+  margin-bottom: 12px;
+}
+
+.value-card p {
+  font-size: 1rem;
+  color: #666;
+}
+
+
+@media (max-width: 768px) {
+  .story-mission {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .slideshow {
+    height: 300px; /* Adjust height for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .slideshow {
+    height: 200px;
+  }
+}
