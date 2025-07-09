@@ -57,11 +57,10 @@ Growthfull Circle Agencies offers a modern, user-friendly web experience that em
 
 ##  Tech Stack
 
-- **Frontend**: React.js + Tailwind CSS
-- **Backend**: Node.js or Django (TBD)
-- **Payments**: Integrated APIs for M-Pesa, Stripe (Card), and Bitcoin
-- **AI Chatbot**: Custom or third-party integration
-- **Hosting**: Vercel / Netlify / Heroku (TBD)
+- **Frontend**: React.js + Vanilla CSS
+- **Backend**: Node.js
+- **AI Chatbot**: Custom or third-party integration(Reactify chatbot)
+- **Hosting**: Vercel
 
 ---
 
