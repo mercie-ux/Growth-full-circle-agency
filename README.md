@@ -2,6 +2,8 @@
 
  **Growthfull-Full-Cirlce**, a digital platform designed to prioritize and promote **mental wellness in the corporate and SME world**. We aim to create a supportive digital environment where organizations can access mental wellness resources, engage with professional services, and foster a healthier work culture.
 
+[live-demo](https://growth-full-circle-agency-64zq.vercel.app/)
+
 ##  Overview
 Growthfull Circle Agencies offers a modern, user-friendly web experience that empowers businesses and teams with:
 
@@ -55,11 +57,10 @@ Growthfull Circle Agencies offers a modern, user-friendly web experience that em
 
 ##  Tech Stack
 
-- **Frontend**: React.js + Tailwind CSS
-- **Backend**: Node.js or Django (TBD)
-- **Payments**: Integrated APIs for M-Pesa, Stripe (Card), and Bitcoin
-- **AI Chatbot**: Custom or third-party integration
-- **Hosting**: Vercel / Netlify / Heroku (TBD)
+- **Frontend**: React.js + Vanilla CSS
+- **Backend**: Node.js
+- **AI Chatbot**: Custom or third-party integration(Reactify chatbot)
+- **Hosting**: Vercel
 
 ---
 
