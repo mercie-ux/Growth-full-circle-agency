@@ -231,9 +231,15 @@
 
 .testimonial-author {
   font-size: 0.9rem;
-  text-align: right;
+  text-align: center;
   color: #666;
 }
+.testimonial-swiper{
+  padding: 1rem 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 /*Animation styles*/
 @keyframes fadeIn {
   0% {

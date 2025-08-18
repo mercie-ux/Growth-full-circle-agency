@@ -3,6 +3,13 @@ import backgroundImage from "../assets/image1.jpg";
 import "../styles/Home.css";
 import { Link } from "react-router-dom";
 import useAnimateOnScroll from "../hooks/useAnimateOnScroll";
+import 'swiper/css';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import '../styles/Testimonials.css'
+
 
 const Home = () => {
   useAnimateOnScroll(); // Custom hook for scroll animations
@@ -12,12 +19,12 @@ const Home = () => {
 
   useEffect(() => {
     // Fetch testimonials from the backend API
-    fetch("http://localhost:5000/api/testimonials")
+    fetch("/api/testimonials")
       .then((response) => response.json())
       .then((data) => {
         console.log("Testimonials data:", data); // Log the fetched data
         setTestimonials(data);
-        setLoading(true); // Set loading to false after data is fetched
+        setLoading(false); // Set loading to false after data is fetched
       })
       .catch((error) => {
         console.error("Error fetching testimonials:", error);
@@ -98,19 +105,32 @@ const Home = () => {
 
       {/* Testimonials Section */}
       <div className="footer-section testimonials" data-animate="fade-slide-up">
-        <h3>Testimonials</h3>
+        <h3>What Our Clients Say</h3>
         <div className="testimonial-container">
       {loading ? (
         <p>Loading testimonials...</p>
       ) : testimonials.length === 0 ? (
         <p>No testimonials available at the moment.</p>
       ) :(
-          testimonials.map((testimonial, index) => (
-            <div key={index} className="testimonial">
-              <p className="testimonial-text">"{testimonial.text}"</p>
-              <p className="testimonial-author">- {testimonial.author}</p>
-            </div>
-          ))
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            navigation={true}
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 3000 }}
+            loop={true}
+            spaceBetween={20}
+            slidesPerView={1}
+            className="testimonial-swiper"
+          >
+            {testimonials.map((testimonial, index) => (
+              <SwiperSlide key={index}>
+                <div className="testimonial">
+                  <p className="testimonial-text">"{testimonial.text}"</p>
+                  <p className="testimonial-author">- {testimonial.author}</p>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
       )}
         </div>
       </div>

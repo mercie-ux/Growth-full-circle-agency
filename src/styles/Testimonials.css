@@ -1,0 +1,26 @@
+
+.swiper {
+  max-width: 600px;   /* shrink width */
+  background: #f8f8f8; /* light gray background */
+  padding: 20px;
+  border-radius: 12px;
+  margin: auto;
+}
+
+/* Arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ff6600 !important;  /* orange arrows */
+  font-size: 5px !important;
+}
+
+/* Pagination dots */
+.swiper-pagination .swiper-pagination-bullet {
+  background: #999 !important;
+  opacity: 0.6;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+  background: #ff6600 !important;
+  opacity: 1;
+}

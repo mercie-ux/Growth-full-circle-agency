@@ -1,13 +1,10 @@
 import dotenv from 'dotenv';
 dotenv.config();
-
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
 import subscribeRoute from './routes/subscribe.js';
 import Contact from './models/Contact.js';
-import OpenAI from 'openai';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -20,34 +17,39 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Routes
 app.use('/api/subscribe', subscribeRoute);
 
-// OpenAI API setup
-const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+const flow = {
+  start: {
+    message: "Hello! I’m GrowthBot, here to support your mental well-being. How can I assist you today?",
+    options: [
+      "I'm feeling stressed",
+      "I'm struggling with anxiety",
+      "I'm feeling sad or low",
+    ],
+  },
+  "I'm feeling stressed": {
+    message: "I’m sorry to hear that. Would you like tips for relaxation or managing workload?",
+    options: ["Relaxation tips", "Workload management"],
+  },
+  "Relaxation tips": {
+    message: "Try deep breathing exercises: inhale 4s, hold 4s, exhale 6s.",
+    options: ["Guide me", "No thanks"],
+  },
+  default: {
+    message: "I didn’t quite understand that. Try choosing an option.",
+    options: ["Go back to start"],
+  },
+};
+
+// Endpoint to get the whole flow
+app.get("/api/flow", (req, res) => {
+  res.json(flow);
 });
-// Growth360 chatbot route
-app.post('/api/chat', async (req, res) => {
-    console.log('Request body:', req.body);
-    const { message } = req.body;
 
-    try {
-        const completion = await openai.chat.completions.create({
-            model: 'gpt-3.5-turbo', // Use a suitable model, e.g., gpt-4o or gpt-3.5-turbo
-            messages: [
-                {
-                    role: 'system',
-                    content: 'You are a mental wellness assistant named GrowthBot. Provide supportive, empathetic, and professional responses related to mental health and well-being.',
-                },
-                { role: 'user', content: message },
-            ],
-            max_tokens: 150,
-        });
-
-        console.log('OpenAI response:', completion);
-        res.json({ response: completion.choices[0].message.content });
-    } catch (error) {
-        console.error('Error with OpenAI API:', error.response?.data || error.message || error);
-        res.status(500).json({ error: 'Failed to fetch response from OpenAI' });
-    }
+// Endpoint to get a specific step
+app.post("/api/next", (req, res) => {
+  const { choice } = req.body;
+  const nextStep = flow[choice] || flow.default;
+  res.json(nextStep);
 });
 
 // Contact Form Route
@@ -64,15 +66,6 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 // MongoDB connection
-mongoose.connect(process.env.MONGO_URI)
-    .then(() => {
-        console.log('MongoDB connected successfully');
-    })
-    .catch((error) => {
-        console.error('MongoDB connection failed:', error.message);
-        process.exit(1);
-    });
-
 
 //test route
 app.get('/', (req, res) => {
