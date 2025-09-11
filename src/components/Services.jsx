@@ -1,7 +1,4 @@
 import useAnimateOnScroll from "../hooks/useAnimateOnScroll";
-import solutionImage1 from "../assets/image3.jpg";
-import solutionImage2 from "../assets/image4.jpg";
-import solutionImage3 from "../assets/image7.png";
 import { CardStack } from "./CardStack";
 import { useState } from "react";
 import "../styles/Services.css";
@@ -13,17 +10,17 @@ const Services = () => {
     {
       title: "Mental Health Support",
       description: "Comprehensive counseling and assessments to foster employee well-being.",
-      image: solutionImage1,
+      image: "/images/image3.jpg",
     },
     {
       title: "Workplace Wellness ",
       description: "Tailored programs and workshops to enhance workplace mental health.",
-      image: solutionImage2,
+      image: "/images/image4.jpg",
     },
     {
       title: "Community Impact",
       description: "Pro bono services and awareness content for underserved communities.",
-      image: solutionImage3,
+      image: "/images/image7.jpg",
     },
   ];
   // packages data
@@ -272,11 +269,7 @@ const Services = () => {
               </div>
             )}
             {/* Common Payment Submit Button */}
-            {selectedPaymentMethod && (
-              <button type="submit" className="submit-payment-button">
-                {`Pay with ${selectedPaymentMethod === 'mpesa' ? 'M-Pesa' : selectedPaymentMethod === 'card' ? 'Card' : 'Bitcoin'}`}
-              </button>
-            )}
+            
             <button type="submit">Submit Subscription</button>
           </form>
         </div>

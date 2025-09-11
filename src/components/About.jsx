@@ -2,17 +2,16 @@ import useAnimateOnScroll from "../hooks/useAnimateOnScroll";
 import { useState, useEffect } from "react";
 import "../styles/About.css";
 
-// Import the images
-import aboutImage1 from "../assets/therapy.jpg";
-import aboutImage2 from "../assets/therapy1.jpg";
-import aboutImage3 from "../assets/therapy2.jpg";
-import aboutImage4 from "../assets/therapy3.jpg";
-import aboutImage5 from "../assets/therapy4.jpg";
-
 const About = () => {
   useAnimateOnScroll();
   // Array of images for the slideshow
-  const images = [aboutImage1, aboutImage2, aboutImage3, aboutImage4, aboutImage5];
+  const images = [
+    "/images/therapy.jpg",
+    "/images/therapy1.jpg",
+    "/images/therapy2.jpg",
+    "/images/therapy3.jpg",
+    "/images/therapy4.jpg",
+  ];
 
   // State to track the current image index
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
