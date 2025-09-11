@@ -1,7 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "./context/ThemeContext.jsx";
-import ThemeToggle from "./components/ThemeToggle";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
@@ -14,8 +12,7 @@ import "./App.css";
 
 function App() {
   return (
-    <ThemeProvider>
-      <ThemeToggle />
+  
       <div className="app">
         
         <Navbar />
@@ -29,7 +26,6 @@ function App() {
         <Footer />
         <MentalWellnessChatbot />
       </div>
-    </ThemeProvider>
   );
 }
 

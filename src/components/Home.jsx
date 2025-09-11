@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import backgroundImage from "../assets/image1.jpg";
+import backgroundImage from "../assets/heroImage.jpg";
 import "../styles/Home.css";
 import { Link } from "react-router-dom";
 import useAnimateOnScroll from "../hooks/useAnimateOnScroll";

@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import "../styles/About.css";
 
 // Import the images
-import aboutImage1 from "../assets/image6.jpg";
-import aboutImage2 from "../assets/image 8.jpg";
-import aboutImage3 from "../assets/image3.jpg";
-import aboutImage4 from "../assets/image4.jpg";
-import aboutImage5 from "../assets/image5.jpg";
+import aboutImage1 from "../assets/therapy.jpg";
+import aboutImage2 from "../assets/therapy1.jpg";
+import aboutImage3 from "../assets/therapy2.jpg";
+import aboutImage4 from "../assets/therapy3.jpg";
+import aboutImage5 from "../assets/therapy4.jpg";
 
 const About = () => {
   useAnimateOnScroll();
