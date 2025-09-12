@@ -4,6 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import subscribeRoute from './routes/subscribe.js';
+import sequelize from './config/database.js';
 import Contact from './models/Contact.js';
 
 const app = express();
@@ -65,7 +66,6 @@ app.post('/api/contact', async (req, res) => {
         res.status(500).json({ error: 'Failed to submit contact form' });
     }
 });
-// MongoDB connection
 
 //test route
 app.get('/', (req, res) => {
@@ -87,7 +87,14 @@ app.get('/api/testimonials', (req, res) => {
     res.json(testimonials);
 })
 
-//start server
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+//sync DB and start server
+sequelize.sync({ alter: true })
+.then(() => {
+  console.log("Database synced");
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+  });
 })
+.catch((err) => {
+  console.error("Database connection failed:", err);
+});

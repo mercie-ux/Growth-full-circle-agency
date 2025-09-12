@@ -1,6 +1,5 @@
 import express from 'express';
-import Subscription from '../models/Subscription.js'; // path to your model file
-
+import Subscription from '../models/Subscription.js';
 const router = express.Router();
 
 router.post('/', async (req, res) => {

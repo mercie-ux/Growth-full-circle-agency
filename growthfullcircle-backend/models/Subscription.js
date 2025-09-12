@@ -1,14 +1,15 @@
-import mongoose from "mongoose";
+import { DataTypes } from "sequelize";
+import sequelize from "../config/database.js";
 
-const SubscriptionSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    package: String,
-    paymentMethod: String,
-    createdAt: {
-        type: Date,
-        default: Date.now,
+const Subscription = sequelize.define("Subscription", {
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+            isEmail: true,
+        },
     },
 });
 
-export default mongoose.model('Subscription', SubscriptionSchema);
+export default Subscription;

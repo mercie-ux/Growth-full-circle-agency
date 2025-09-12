@@ -1,11 +1,26 @@
-import mongoose from 'mongoose';
+import { DataTypes } from "sequelize";
+import sequelize from "../config/database.js";
 
-const contactSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true },
-  company: { type: String },
-  message: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now },
+const Contact = sequelize.define("Contact", {
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      isEmail: true,
+    },
+  },
+  company: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  message: {
+    type: DataTypes.TEXT,
+    allowNull: false,
+  },
 });
 
-export default mongoose.model('Contact', contactSchema);
+export default Contact;
