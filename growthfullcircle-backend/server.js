@@ -1,11 +1,13 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
+import axios from "axios";
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import subscribeRoute from './routes/subscribe.js';
 import sequelize from './config/database.js';
 import Contact from './models/Contact.js';
+import mpesaRoute from './routes/mpesa.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -17,6 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // Routes
 app.use('/api/subscribe', subscribeRoute);
+app.use('/api/mpesa', mpesaRoute);
 
 const flow = {
   start: {
