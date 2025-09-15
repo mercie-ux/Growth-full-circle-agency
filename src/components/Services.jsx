@@ -2,6 +2,9 @@ import useAnimateOnScroll from "../hooks/useAnimateOnScroll";
 import { CardStack } from "./CardStack";
 import { useState } from "react";
 import "../styles/Services.css";
+import CardPaymentForm from "./payments/CardPaymentForm";
+import MpesaPaymentForm from "./payments/MpesaPaymentForm";
+import BitcoinPaymentForm from "./payments/BitcoinPaymentForm";
 
 const Services = () => {
   useAnimateOnScroll();
@@ -217,60 +220,10 @@ const Services = () => {
                 />
                 Bitcoin
               </label>
+              {selectedPaymentMethod === "card" && <CardPaymentForm />}
+              {selectedPaymentMethod === "mpesa" && <MpesaPaymentForm />}
+              {selectedPaymentMethod === "bitcoin" && <BitcoinPaymentForm />}
             </div>
-            {/*Card Payment form */}
-            {selectedPaymentMethod === "card" && (
-              <div className="payment-popup card-form">
-                <label htmlFor="cardName">Cardholder Name:</label>
-                <input type="text" id="cardName" name="cardName" required />
-
-                <label htmlFor="cardNumber">Card Number:</label>
-                <input type="text" id="cardNumber" name="cardNumber" required />
-
-                <label htmlFor="expiry">Expiry Date:</label>
-                <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required />
-
-                <label htmlFor="cvv">CVV:</label>
-                <input type="text" id="cvv" name="cvv" required />
-
-                <button type="submit">Pay with Card</button>
-              </div>
-            )}
-            {selectedPaymentMethod === "mpesa" && (
-              <div className="payment-popup mpesa-form">
-                <label htmlFor="mpesaPhone">M-Pesa Phone Number:</label>
-                <input type="tel" id="mpesaPhone" name="mpesaPhone" required />
-
-                <label htmlFor="mpesaCode">Transaction Code (optional):</label>
-                <input type="text" id="mpesaCode" name="mpesaCode" />
-
-                <button type="submit">Pay with M-Pesa</button>
-              </div>
-            )}
-            {selectedPaymentMethod === "bitcoin" && (
-              <div className="payment-popup bitcoin-form">
-                <label htmlFor="btcWallet">Your Bitcoin Wallet Address:</label>
-                <input type="text" id="btcWallet" name="btcWallet" required />
-
-                <label htmlFor="btcAmount">Amount in BTC (sats):</label>
-                <input type="text" id="btcAmount" name="btcAmount" step="0.0001" required />
-
-                <p>Please send the payment to the following address:</p>
-                <code>bc1qyourwalletaddresshere</code>
-
-                <img
-                  src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=bitcoin:bc1qyourwalletaddresshere?amount=0.0005"
-                  alt="Bitcoin QR Code"
-                />
-
-                <p>After sending, click the button below to complete the subscription.</p>
-
-                <button type="submit">Confirm Bitcoin Payment</button>
-              </div>
-            )}
-            {/* Common Payment Submit Button */}
-            
-            <button type="submit">Submit Subscription</button>
           </form>
         </div>
       </div>
