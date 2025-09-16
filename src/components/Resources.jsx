@@ -1,5 +1,6 @@
 import useAnimateOnScroll from "../hooks/useAnimateOnScroll";
 import "../styles/Resources.css";
+import { Link } from "react-router-dom";
 import mentalHealthImage from "../assets/design3.png";
 import clientEngagementImage from "../assets/survey.jpg";
 import wellnessProgramImage from "../assets/implement1.jpg";
@@ -77,6 +78,12 @@ const Resources = () => {
                 </a>
               </div>
             ))}
+          </div>
+          {/*button to direct to blog page */}
+          <div className="see-more-blogs">
+            <Link to="/blog" className="btn btn-primary">
+              See More Blogs
+            </Link>
           </div>
           <h4>Categories</h4>
           <ul>

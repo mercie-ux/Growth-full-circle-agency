@@ -8,6 +8,7 @@ import Resources from "./components/Resources";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import MentalWellnessChatbot from "./components/MentalWellnessChatbot";
+import Blog from "./components/Blog";
 import "./App.css";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />}/>
         </Routes>
         <Footer />
         <MentalWellnessChatbot />

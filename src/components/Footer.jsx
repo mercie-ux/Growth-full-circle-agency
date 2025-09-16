@@ -23,6 +23,9 @@ const Footer = () => {
             <li>
               <Link to="/contact">Contact</Link>
             </li>
+            <li>
+              <Link to="/blog">Blogs</Link>
+            </li>
           </ul>
         </div>
         <div className="footer-section social-media">
