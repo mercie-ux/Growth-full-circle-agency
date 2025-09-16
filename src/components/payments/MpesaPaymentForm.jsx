@@ -10,7 +10,7 @@ const MpesaPaymentForm = () => {
         setMessage("Processing payment...");
 
         try {
-            const response = await fetch("http://localhost:5000/api/payments/mpesa", {
+            const response = await fetch("https://growth-full-circle-agency.onrender.com/api/mpesa", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
