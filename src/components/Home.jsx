@@ -18,7 +18,8 @@ const Home = () => {
 
   useEffect(() => {
     // Fetch testimonials from the backend API
-    fetch(`${process.env.REACT_APP_API_URL}/api/testimonials`)
+    const apiUrl = import.meta.env.VITE_API_URL;
+    fetch(`${apiUrl}/api/testimonials`)
       .then((response) => response.json())
       .then((data) => {
         console.log("Testimonials data:", data); // Log the fetched data
