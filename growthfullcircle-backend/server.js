@@ -6,7 +6,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import subscribeRoute from './routes/subscribe.js';
 import sequelize from './config/database.js';
-import Contact from './models/Contact.js';
+import contactRoute from './routes/contact.js';
 import mpesaRoute from './routes/mpesa.js';
 
 const app = express();
@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Routes
 app.use('/api/subscribe', subscribeRoute);
 app.use('/api/mpesa', mpesaRoute);
+app.use("/api", contactRoute);
 
 const flow = {
   start: {
@@ -56,19 +57,6 @@ app.post("/api/next", (req, res) => {
   res.json(nextStep);
 });
 
-// Contact Form Route
-app.post('/api/contact', async (req, res) => {
-    const { name, email, company, message } = req.body;
-
-    try {
-        const newContact = new Contact({ name, email, company, message });
-        await newContact.save();
-        res.status(201).json({ message: 'Contact form submitted successfully!' });
-    } catch (error) {
-        console.error('Error saving contact form:', error);
-        res.status(500).json({ error: 'Failed to submit contact form' });
-    }
-});
 
 //test route
 app.get('/', (req, res) => {
