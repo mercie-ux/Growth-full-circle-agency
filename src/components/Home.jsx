@@ -18,7 +18,7 @@ const Home = () => {
 
   useEffect(() => {
     // Fetch testimonials from the backend API
-    fetch("/api/testimonials")
+    fetch("https://growth-full-circle-agency.onrender.com/api/testimonials")
       .then((response) => response.json())
       .then((data) => {
         console.log("Testimonials data:", data); // Log the fetched data
