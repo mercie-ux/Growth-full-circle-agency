@@ -1,11 +1,15 @@
 import useAnimateOnScroll from "../hooks/useAnimateOnScroll";
 import "../styles/Contact.css";
+import { useState } from "react";
 
 const Contact = () => {
-  useAnimateOnScroll();  
+  useAnimateOnScroll();
+  const [status, setStatus] = useState(null); // success | error | loading
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setStatus("loading");
+
     const formData = new FormData(event.target);
     const data = {
       name: formData.get("name"),
@@ -15,21 +19,23 @@ const Contact = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("https://growth-full-circle-agency.onrender.com/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+
       const result = await response.json();
+
       if (response.ok) {
-        alert('Thank you for your message! We will get back to you soon.');
-        event.target.reset(); // Clear the form
+        setStatus("success");
+        event.target.reset();
       } else {
-        alert(`Error: ${result.error || 'Please try again.'}`);
+        setStatus(result.error || "error");
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('An error occurred. Please try again later.');
+      console.error("Error submitting form:", error);
+      setStatus("error");
     }
   };
 
@@ -43,23 +49,29 @@ const Contact = () => {
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" required />
+                <input type="text" id="name" name="name" required />
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Your Email" required />
+                <input type="email" id="email" name="email" required />
               </div>
               <div className="form-group">
                 <label htmlFor="company">Company</label>
-                <input type="text" id="company" name="company" placeholder="Your Company" />
+                <input type="text" id="company" name="company" />
               </div>
               <div className="form-group">
                 <label htmlFor="message">Message</label>
-                <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                <textarea id="message" name="message" rows="5" required></textarea>
               </div>
-              <button type="submit">Send Message</button>
+              <button type="submit" disabled={status === "loading"}>
+                {status === "loading" ? "Sending..." : "Send Message"}
+              </button>
             </form>
+
+            {status === "success" && <p className="success-msg">Thank you! We’ll get back to you soon.</p>}
+            {status === "error" && <p className="error-msg">Something went wrong. Try again later.</p>}
           </div>
+
           <div className="contact-info" data-animate="fade-slide-up">
             <img width="300px" height="200px" src="/contact-us.jpg" alt="contact" />
             <h3>Contact Information</h3>
