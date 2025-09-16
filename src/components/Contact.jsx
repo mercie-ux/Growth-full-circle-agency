@@ -73,7 +73,7 @@ const Contact = () => {
           </div>
 
           <div className="contact-info" data-animate="fade-slide-up">
-            <img width="300px" height="200px" src="/contact-us.jpg" alt="contact" />
+            <img width="300px" height="200px" src="/images/contact-us.jpg" alt="contact" />
             <h3>Contact Information</h3>
             <p>
               <strong>Email: </strong>growthfullcircleagencies@gmail.com
